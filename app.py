@@ -4,16 +4,16 @@ from datetime import date
 import streamlit as st
 from streamlit.components.v1 import iframe
 
-st.set_page_config(layout="centered", page_icon="🎓", page_title="Diploma Generator")
-st.title("🎓 Diploma PDF Generator")
+st.set_page_config(layout="centered", page_icon="🎓", page_title="Free Certificates.com")
+st.title("🎓 Free Certificates")
 
 st.write(
-    "This app shows you how you can use Streamlit to make a PDF generator app in just a few lines of code!"
+    "We allow you to get free Certificates for you and your friends for all Coding related courses. "
 )
 
 left, right = st.columns(2)
 
-right.write("Here's the template we'll be using:")
+right.write("This is how your certificate will look like")
 
 right.image("template.png", width=300)
 
@@ -21,16 +21,16 @@ env = Environment(loader=FileSystemLoader("."), autoescape=select_autoescape())
 template = env.get_template("template.html")
 
 
-left.write("Fill in the data:")
+left.write("Fill your details:")
 form = left.form("template_form")
-student = form.text_input("Student name")
+student = form.text_input("Your Name:")
 course = form.selectbox(
-    "Choose course",
-    ["Report Generation in Streamlit", "Advanced Cryptography"],
+    "Choose which course certificate do you want",
+    ["Advanced Python", "Python Basics","Advanced Java","C++ basics","Advanced C++","Web Developer"],
     index=0,
 )
-grade = form.slider("Grade", 1, 100, 60)
-submit = form.form_submit_button("Generate PDF")
+grade = form.slider("You are free to give any marks to you.", 1, 100, 65)
+submit = form.form_submit_button("Generate CERTIFICATE")
 
 if submit:
     html = template.render(
@@ -43,12 +43,12 @@ if submit:
     pdf = pdfkit.from_string(html, False)
     st.balloons()
 
-    right.success("🎉 Your diploma was generated!")
+    right.success("🎉 Your Certificate is generated!")
     # st.write(html, unsafe_allow_html=True)
     # st.write("")
     right.download_button(
-        "⬇️ Download PDF",
+        "⬇️ Download your Certificate PDF",
         data=pdf,
-        file_name="diploma.pdf",
+        file_name="Certificate.pdf",
         mime="application/octet-stream",
     )
