@@ -47,7 +47,7 @@ if submit:
     # st.write(html, unsafe_allow_html=True)
     # st.write("")
     right.download_button(
-        "⬇️ Download your Certificate PDF",
+        "⬇️ Download your Certificate",
         data=pdf,
         file_name="Certificate.pdf",
         mime="application/octet-stream",
