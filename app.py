@@ -4,7 +4,7 @@ from datetime import date
 import streamlit as st
 from streamlit.components.v1 import iframe
 
-st.set_page_config(layout="centered", page_icon="🎓", page_title="Meenakshi.com")
+st.set_page_config(layout="centered", page_icon="🎓", page_title="Meenakshi")
 st.title("🎓 Free Certificates")
 
 st.write(
